@@ -1,5 +1,5 @@
 ````
-[現在検証中です]
+[これは現在検証中のコードの置き場所です]
 これはPrimoNDEのAngular CustomComponentを作成するときに使用するテスト用コンポーネントです。
 
 https://github.com/ExLibrisGroup/customModule
