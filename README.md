@@ -41,7 +41,7 @@ app stateは、hostComponentと異なり、コンポーネントの配置位置�
 ndeRootStateの中の階層構造をコンソールログで展開して確認（またはコンソール上で >ndeRootStateと実行）することで、取得できるstateとその位置を把握することができます。
 
 例：（stateは大文字・小文字を判別するので注意）
-
+◆selector作成部分
   //selector作成:現在表示中の画面 routerState.routerState
   const selectRouterStateFeature = createFeatureSelector<any>('routerState');
   const selectRouterState = createSelector(
@@ -76,6 +76,18 @@ ndeRootStateの中の階層構造をコンソールログで展開して確認�
   selectLanguageFeature,
   (state) => state?.lang
   );
+
+◆selector取得部分
+  //上で定義したselectorの値を取得する
+export class XxxComponent{
+  @Input() hostComponent!: any;
+  private store = inject(Store);
+  routerState = this.store.selectSignal(selectRouterState);
+  query = this.store.selectSignal(selectQuery);
+  searchScope = this.store.selectSignal(selectSearchScope);
+  vid = this.store.selectSignal(selectVid);
+  lang = this.store.selectSignal(selectLang);
+}
 
   // （参考）URLについては、以下のようにwindow.location.hrefからより簡易的に取得することも可能
   const url = new URL(window.location.href);
